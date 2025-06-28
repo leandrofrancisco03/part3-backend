@@ -2,10 +2,26 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-  "content": "Nueva Nota",
+  "content": "aa",
   "important": true
 }
 
-###
+### las notas
 GET http://localhost:3001/api/notes
 Content-Type: application/json
+
+### Probando el manejo de errores
+GET http://localhost:3001/api/notes/999AAA
+Content-Type: application/json
+
+### Probar eliminar una nota
+DELETE http://localhost:3001/api/notes/68577b25ae19425a9bf05baf
+
+### probar actualizar una nota
+PUT http://localhost:3001/api/notes/68577bdbae19425a9bf05bba
+Content-Type: application/json
+
+{
+  "content": "uu",
+  "important": false
+}
