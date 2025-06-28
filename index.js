@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const Note = require("./models/note");
 const cors = require("cors");
-const path = require('path')
 
 const app = express();
 app.use(cors());
@@ -74,10 +73,6 @@ app.put("/api/notes/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
-// Middleware para servir archivos estáticos
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname, 'dist', 'index.html'))
-})
 
 
 //Middleware para rutas desconocidas
