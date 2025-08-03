@@ -25,3 +25,62 @@ Content-Type: application/json
   "content": "uu",
   "important": false
 }
+
+### Crear un nuevo usuario
+POST http://localhost:3001/api/users/
+Content-Type: application/json
+
+{
+  "username": "root",
+  "name": "Superuser",
+  "password": "salainen"
+}
+
+### Crear usuario Francisco
+POST http://localhost:3001/api/users/
+Content-Type: application/json
+
+{
+  "username": "francisco",
+  "name": "Francisco Vigo",
+  "password": "hola123"
+}
+
+### usuario crea una nota de root
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "esta nota es de root y es importante",
+  "important": true,
+  "userId": "688598c593a442a656296977"
+}
+
+### usuario crea una nota de francisco
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "esta nota es de francisco y es importante",
+  "important": true,
+  "userId": "688598f593a442a65629697a"
+}
+
+### utilizando el login de root
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "root",
+  "password": "salainen"
+}
+
+### ahora crear una nota con el token de root
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY4ODU5OGM1OTNhNDQyYTY1NjI5Njk3NyIsImlhdCI6MTc1NDA5ODE5MX0.DWSmdCN0n2SVk9umvlY90EYCPD02FnynxFLDH-lqQ2M
+
+{
+  "content": "esta nota es de root y es importante utilizamos el token",
+  "important": true
+}
